@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Cookies from 'js-cookie';
 import { Link, useNavigate } from 'react-router-dom';
+import { Call_Post_Api } from '../../../CallApis/CallApis';
 
 function UsesPage() {
 
     const navigate = useNavigate();
 
     //Khai báo token
-    const [token, setToken] = useState('')
-    const [name, setName] = useState('')
+    const [tokens, setToken] = useState('')
+    const [names, setName] = useState('')
 
 
     useEffect(() => {
@@ -19,6 +20,12 @@ function UsesPage() {
         const cleanId = id?.replace(/^"|"$/g, '');
         const cleanName = name?.replace(/^"|"$/g, '');
 
+        Call_Post_Api(
+            null, cleanedJwtString, cleanId, "/music/getMusicByUserId/" + cleanId
+        )
+            .then((data) => {
+                console.log({ data })
+            })
 
         setToken(cleanedJwtString)
         setName(cleanName)
@@ -39,7 +46,7 @@ function UsesPage() {
                 width: '80%'
             }}>
                 <div>
-                    {name}
+                    {names}
                 </div>
 
                 <div>
