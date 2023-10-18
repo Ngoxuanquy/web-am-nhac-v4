@@ -36,6 +36,7 @@ function Backgroug() {
                     x: this.x + this.half_size * Math.sin(this.r + full * 3),
                     y: this.y + this.half_size * Math.cos(this.r + full * 3),
                 };
+
                 return {
                     p1: p1,
                     p2: p2,
@@ -75,9 +76,16 @@ function Backgroug() {
                 const points = [];
 
                 for (const dot in dots) {
-                    const angle = Math.atan2(light.y - dots[dot].y, light.x - dots[dot].x);
-                    const endX = dots[dot].x + this.shadow_length * Math.sin(-angle - Math.PI / 2);
-                    const endY = dots[dot].y + this.shadow_length * Math.cos(-angle - Math.PI / 2);
+                    const angle = Math.atan2(
+                        light.y - dots[dot].y,
+                        light.x - dots[dot].x,
+                    );
+                    const endX =
+                        dots[dot].x +
+                        this.shadow_length * Math.sin(-angle - Math.PI / 2);
+                    const endY =
+                        dots[dot].y +
+                        this.shadow_length * Math.cos(-angle - Math.PI / 2);
                     angles.push(angle);
                     points.push({
                         endX: endX,
@@ -109,7 +117,14 @@ function Backgroug() {
         function drawLight() {
             ctx.beginPath();
             ctx.arc(light.x, light.y, 1000, 0, 2 * Math.PI);
-            const gradient = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 1000);
+            const gradient = ctx.createRadialGradient(
+                light.x,
+                light.y,
+                0,
+                light.x,
+                light.y,
+                1000,
+            );
             gradient.addColorStop(0, '#3b4654');
             gradient.addColorStop(1, '#2c343f');
             ctx.fillStyle = gradient;
@@ -117,7 +132,14 @@ function Backgroug() {
 
             ctx.beginPath();
             ctx.arc(light.x, light.y, 20, 0, 2 * Math.PI);
-            const newGradient = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 5);
+            const newGradient = ctx.createRadialGradient(
+                light.x,
+                light.y,
+                0,
+                light.x,
+                light.y,
+                5,
+            );
             newGradient.addColorStop(0, '#fff');
             newGradient.addColorStop(1, '#3b4654');
             ctx.fillStyle = newGradient;
@@ -132,12 +154,24 @@ function Backgroug() {
         function collisionDetection(b) {
             for (let i = boxes.length - 1; i >= 0; i--) {
                 if (i !== b) {
-                    const dx = (boxes[b].x + boxes[b].half_size) - (boxes[i].x + boxes[i].half_size);
-                    const dy = (boxes[b].y + boxes[b].half_size) - (boxes[i].y + boxes[i].half_size);
+                    const dx =
+                        boxes[b].x +
+                        boxes[b].half_size -
+                        (boxes[i].x + boxes[i].half_size);
+                    const dy =
+                        boxes[b].y +
+                        boxes[b].half_size -
+                        (boxes[i].y + boxes[i].half_size);
                     const d = Math.sqrt(dx * dx + dy * dy);
                     if (d < boxes[b].half_size + boxes[i].half_size) {
-                        boxes[b].half_size = boxes[b].half_size > 1 ? boxes[b].half_size -= 1 : 1;
-                        boxes[i].half_size = boxes[i].half_size > 1 ? boxes[i].half_size -= 1 : 1;
+                        boxes[b].half_size =
+                            boxes[b].half_size > 1
+                                ? (boxes[b].half_size -= 1)
+                                : 1;
+                        boxes[i].half_size =
+                            boxes[i].half_size > 1
+                                ? (boxes[i].half_size -= 1)
+                                : 1;
                     }
                 }
             }
@@ -176,15 +210,17 @@ function Backgroug() {
     }, []);
 
     return (
-        <div style={{
-            position: 'absolute',
-            zIndex: 1,
-            width: '100%',
-            height: '100%'
-        }}>
-            <canvas id="canvas" ></canvas>
+        <div
+            style={{
+                position: 'absolute',
+                zIndex: 1,
+                width: '100%',
+                height: '100%',
+            }}
+        >
+            <canvas id="canvas"></canvas>
         </div>
     );
 }
 
-export default Backgroug
+export default Backgroug;

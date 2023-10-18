@@ -19,7 +19,7 @@ function SingUp() {
     function handerSubmit() {
         if (email !== "" && pass !== "" && re_Pass !== "") {
             // Check if the email is in the correct format
-            const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+                const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
             if (!emailPattern.test(email)) {
                 // alert("Vui lòng nhập một địa chỉ email hợp lệ");
                 message.warning("Vui lòng nhập một địa chỉ email hợp lệ");
