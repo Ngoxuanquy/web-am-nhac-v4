@@ -1,3 +1,0 @@
-- Những gì rút ra trong buổi học
-- phải hiểu được git và cách push code lên
-- cách demo git của các thành viên trong dự án
