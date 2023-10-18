@@ -1,0 +1,7 @@
+sau buổi học ngày 18/10/2023 em rút ra được bài học là:
+- cách kiểm soát mã nguồn
+- cách làm việc của một dự án trong quanbr lý mã nguồn
+- phải chia công vieeckj quản lsy mã nguồn một cách rõ ràng cho dev và test
+- cả DT và rAI đều phải biết cách sử dụng phền mèm quản lý mã nguồn
+- hiểu rõ quy trình đẩy code, puul, phush, dộp nhánh, tách nhánh, quay lại
+- chuẩn bị nội dung cho buổi thi
