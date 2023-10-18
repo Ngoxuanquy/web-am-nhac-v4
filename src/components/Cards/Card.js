@@ -11,7 +11,6 @@ function Card({ width }) {
                     <button
                         style={{
                             border: 'none',
-                            margin: 0,
                         }}
                     >
                         <img
